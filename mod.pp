@@ -3,7 +3,7 @@ mod "pipes" {
 }
 
 locals {
-  host = "https://pipes.turbot.com/org/turbot-ops/workspace/stats/dashboard"
+  host = "https://pipes.turbot.com/user/judell/workspace/personal/dashboard"
   //host = "http://localhost:9033"
   
   menu = <<EOT

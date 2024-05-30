@@ -1,8 +1,23 @@
-dashboard "MyWorkspaces" {
+dashboard "My_Workspaces" {
 
   tags = {
     service = "Pipes"
   }
+
+  container {
+    text {
+      value = replace(
+        replace(
+          "${local.menu}",
+          "__HOST__",
+          "${local.host}"
+        ),
+        "[My_Workspaces](${local.host}/pipes.dashboard.My_Workspaces)",
+        "My_Workspaces"
+      )
+    }
+  }  
+
 
   table {
     title = "My workspaces"
@@ -27,5 +42,6 @@ dashboard "MyWorkspaces" {
       order by org_handle, w.handle
       EOQ
   }
+
 
 }

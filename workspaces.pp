@@ -29,6 +29,7 @@ dashboard "My_Workspaces" {
       select 
         org_handle,
         w.handle as w_handle,
+        w.id as w_id,
         display_name,
         status,
         database_name,
@@ -41,6 +42,10 @@ dashboard "My_Workspaces" {
       join pipes_workspace w on o.org_id = w.identity_id
       order by org_handle, w.handle
       EOQ
+    column "w_id" {
+      href = "${local.host}/pipes.dashboard.Workspace_Detail?input.workspace_ids={{.'w_id'}}"      
+    }  
+
   }
 
 

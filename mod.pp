@@ -7,8 +7,14 @@ locals {
   host = "http://localhost:9033"
   
   menu = <<EOT
+[My_Audits](__HOST__/pipes.dashboard.My_Audits)
+•
+[My_Connections](__HOST__/pipes.dashboard.My_Connections)
+•
 [My_Orgs](__HOST__/pipes.dashboard.My_Orgs)
 •
 [My_Workspaces](__HOST__/pipes.dashboard.My_Workspaces)
+•
+[Workspaces_Detail](__HOST__/pipes.dashboard.Workspace_Detail)
 EOT
 }

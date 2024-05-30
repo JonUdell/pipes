@@ -23,12 +23,12 @@ dashboard "My_Audits" {
     title = "My audits"
     sql = <<EOQ
       with handle as (
-        select handle from pipes_user
+        select handle from pipes.pipes_user
       )
       select
         *
       from
-        pipes_audit_log a
+        pipes.pipes_audit_log a
       join 
         handle h 
       on h.handle = a.identity_handle

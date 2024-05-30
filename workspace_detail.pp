@@ -24,7 +24,7 @@ container {
         handle || '/' || identity_handle as label,
         id as value
       from
-        pipes_workspace
+        pipes.pipes_workspace
       order by
         identity_handle, handle
     EOQ
@@ -39,7 +39,7 @@ table {
     select
       *
     from
-      pipes_workspace
+      pipes.pipes_workspace
     where
       id = $1
     EOQ

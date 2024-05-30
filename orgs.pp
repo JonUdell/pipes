@@ -28,7 +28,7 @@ dashboard "My_Orgs" {
         id,
         created_at,
         updated_at
-      from pipes_organization
+      from pipes.pipes_organization
       order by handle
     EOQ
   }

@@ -27,7 +27,7 @@ dashboard "My_Connections" {
         handle,
         identity_handle
       from
-        pipes_connection
+        pipes.pipes_connection
       order by
         plugin, identity_handle
     EOQ

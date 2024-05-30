@@ -32,7 +32,7 @@ dashboard "My_Org_Members" {
             row_number() over (partition by org_handle order by user_handle) as rn,
             dense_rank() over (order by org_handle) as org_rank
         from
-            pipes_organization_member
+            pipes.pipes_organization_member
     )
     select
         case

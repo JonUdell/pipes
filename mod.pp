@@ -13,6 +13,8 @@ locals {
 •
 [My_Orgs](__HOST__/pipes.dashboard.My_Orgs)
 •
+[My_Org_Members](__HOST__/pipes.dashboard.My_Org_Members)
+•
 [My_Workspaces](__HOST__/pipes.dashboard.My_Workspaces)
 •
 [Workspaces_Detail](__HOST__/pipes.dashboard.Workspace_Detail)

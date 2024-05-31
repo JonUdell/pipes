@@ -11,11 +11,15 @@ locals {
 •
 [Connections](__HOST__/pipes.dashboard.Connections)
 •
+[Mods](__HOST__/pipes.dashboard.Mods)
+•
 [Orgs](__HOST__/pipes.dashboard.Orgs)
 •
 [Org_Members](__HOST__/pipes.dashboard.Org_Members)
 •
 [Pipelines](__HOST__/pipes.dashboard.Pipelines)
+•
+[Pipelines_Failed](__HOST__/pipes.dashboard.Pipelines_Failed)
 •
 [Queries](__HOST__/pipes.dashboard.Queries)
 •

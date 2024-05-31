@@ -1,4 +1,4 @@
-dashboard "My_Org_Members" {
+dashboard "Org_Members" {
 
   tags = {
     service = "Pipes"
@@ -12,8 +12,8 @@ dashboard "My_Org_Members" {
           "__HOST__",
           "${local.host}"
         ),
-        "[My_Org_Members](${local.host}/pipes.dashboard.My_Org_Members)",
-        "My_Org_Members"
+        "[Org_Members](${local.host}/pipes.dashboard.Org_Members)",
+        "Org_Members"
       )
     }
   }  
@@ -21,7 +21,7 @@ dashboard "My_Org_Members" {
 
   table {
     width = 4
-    title = "My org members"
+    title = "Org members"
 
     sql = <<EOQ
     with cte as (

@@ -1,4 +1,4 @@
-dashboard "My_Workspaces" {
+dashboard "Workspaces" {
 
   tags = {
     service = "Pipes"
@@ -12,15 +12,15 @@ dashboard "My_Workspaces" {
           "__HOST__",
           "${local.host}"
         ),
-        "[My_Workspaces](${local.host}/pipes.dashboard.My_Workspaces)",
-        "My_Workspaces"
+        "[Workspaces](${local.host}/pipes.dashboard.Workspaces)",
+        "Workspaces"
       )
     }
   }  
 
 
   table {
-    title = "My workspaces"
+    title = "Workspaces"
     sql = <<EOQ
       with org_data as (
           select id as org_id, handle as org_handle, created_by_id

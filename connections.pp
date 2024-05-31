@@ -1,4 +1,4 @@
-dashboard "My_Connections" {
+dashboard "Connections" {
 
   tags = {
     service = "Pipes"
@@ -12,15 +12,15 @@ dashboard "My_Connections" {
           "__HOST__",
           "${local.host}"
         ),
-        "[My_Connections](${local.host}/pipes.dashboard.My_Connections)",
-        "My_Connections"
+        "[Connections](${local.host}/pipes.dashboard.Connections)",
+        "Connections"
       )
     }
   }  
 
 
   table {
-    title = "My Connections"
+    title = "Connections"
     sql = <<EOQ
       select
         plugin,

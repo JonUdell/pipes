@@ -1,4 +1,4 @@
-dashboard "My_Orgs" {
+dashboard "Orgs" {
 
   tags = {
     service = "Pipes"
@@ -12,15 +12,15 @@ dashboard "My_Orgs" {
           "__HOST__",
           "${local.host}"
         ),
-        "[My_Orgs](${local.host}/pipes.dashboard.My_Orgs)",
-        "My_Orgs"
+        "[Orgs](${local.host}/pipes.dashboard.Orgs)",
+        "Orgs"
       )
     }
   }  
 
 
   table {
-    title = "My orgs"
+    title = "Orgs"
     sql = <<EOQ
       select 
         handle,

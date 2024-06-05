@@ -20,29 +20,27 @@ dashboard "Connections" {
 
   table {
     title = "Connections"
-    width = 4
+    width = 6
     sql = <<EOQ
-      with cte as (
+      with data as (
           select
-              plugin,
-              handle || '/' || identity_handle as org_workspace,
-              row_number() over (partition by plugin order by handle, identity_handle) as row_num,
-              count(*) over (partition by plugin) as plugin_count,
-              dense_rank() over (order by plugin) as dense_rank
-          from
-              pipes_connection
+              suppress_and_count_repeats(
+                  'pipes',
+                  'pipes_connection',
+                  'plugin',
+                  'identity_handle, handle',
+                  array['identity_handle', 'handle', 'created_by']
+              ) as json_data
       )
       select
-          case
-              when row_num = 1 then plugin || ' (' || plugin_count || ')'
-              else ''
-          end as plugin,
-          org_workspace
-      FROM
-          cte
-      ORDER BY
-          dense_rank,
-          row_num;
+          json_data->>'display_partition_column' as plugin,
+          concat(
+            json_data->'additional_columns'->>0,
+            '/',
+            json_data->'additional_columns'->>1
+          ) as org_workspace,
+          json_data->'additional_columns'->2->>'handle' as conn_created_by
+      from data
     EOQ
   }
 

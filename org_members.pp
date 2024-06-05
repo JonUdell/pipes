@@ -18,34 +18,27 @@ dashboard "Org_Members" {
     }
   }  
 
-
   table {
-    width = 4
+    width = 6
     title = "Org members"
-
     sql = <<EOQ
-    with cte as (
+      with data as (
         select
-            org_handle,
-            user_handle,
-            status,
-            row_number() over (partition by org_handle order by user_handle) as rn,
-            dense_rank() over (order by org_handle) as org_rank
-        from
-            pipes.pipes_organization_member
-    )
-    select
-        case
-            when rn = 1 then org_handle
-            else ''
-        end as org_handle,
-        user_handle,
-        status
-    from
-        cte
-    order by
-        org_rank,
-        rn;
+          suppress_and_count_repeats (
+            'pipes',
+            'pipes_organization_member',
+            'org_handle',
+            'user_handle, user_id, status',
+            array['user_handle', 'user_id', 'status']
+          ) as json_data
+      )
+      select
+        json_data ->> 'display_partition_column' as org_handle,
+        (json_data -> 'additional_columns' ->> 0) as user_handle,
+        (json_data -> 'additional_columns' ->> 1) as user_id,
+        (json_data -> 'additional_columns' ->> 2) as status
+      from
+        data
    EOQ
   }
 

@@ -55,6 +55,8 @@ BEGIN
         partition_by_column, additional_selects, partition_by_column, partition_by_column, order_by_columns,
         schema_name, table_name, additional_selects
     );
+
+    --RAISE exception 'Generated Query: %', generated_query;
     
     -- Execute the generated query and return the result as JSON
     RETURN QUERY EXECUTE generated_query;

@@ -27,8 +27,7 @@ dashboard "Queries" {
       select
         actor_handle,
         workspace_handle,
-        pg_typeof(created_at),
-        --to_char(created_at, 'YYYY-MM-DD:H24') as created_at,
+        substring(created_at from 1 for 19) as created_at,
         duration,
         substring(query from 1 for 400) as query
       from
@@ -38,11 +37,10 @@ dashboard "Queries" {
       on 
         h.handle = w.actor_handle
       where
-        query !~ '-- ping'
-        and query !~ 'introspection'
+        query !~ '-- ping|introspection|SHOW|SET|pg_tables|steampipe_internal|information_schema'
       order by
         created_at desc
-      limit 100
+      limit 20
     EOQ
     column "query" {
       wrap = "all"

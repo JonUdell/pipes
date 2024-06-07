@@ -25,7 +25,8 @@ dashboard "Pipelines_Failed" {
         title,
         workspace_handle,
         identity_handle,
-        last_process->>'created_at',
+        last_process_id,
+        last_process->>'created_at' as last_process_created_at,
         identity_type,
         id
       from
@@ -34,7 +35,7 @@ dashboard "Pipelines_Failed" {
         last_process->>'state' = 'failed'
     EOQ
     column "title" {
-      href = "https://pipes.turbot.com/{{.'identity_type'}}/{{.'identity_handle'}}/workspace/{{.'workspace_handle'}}/pipeline/{{.'id'}}"
+      href = "https://pipes.turbot.com/{{.'identity_type'}}/{{.'identity_handle'}}/workspace/{{.'workspace_handle'}}/activity/process/{{.'last_process_id'}}"
     }
   }
 

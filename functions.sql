@@ -40,7 +40,7 @@ BEGIN
         SELECT json_build_object(
             'display_partition_column', CASE 
                                             WHEN row_num = 1 THEN partition_column || ' (' || partition_count || ')'
-                                            ELSE NULL
+                                            ELSE ''
                                         END,
             'additional_columns', json_build_array(%s),        -- Construct JSON array for additional columns
             'row_num', row_num,

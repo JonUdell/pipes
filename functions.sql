@@ -22,7 +22,7 @@ BEGIN
             additional_json_build := additional_json_build || ', ';
         END IF;
         additional_selects := additional_selects || format('%I', trim(additional_column_names[i]));  -- Format the select statement for each additional column
-        additional_json_build := additional_json_build || format('''%I'', %I', trim(additional_column_names[i]), trim(additional_column_names[i]));  -- Format the JSON build statement for each additional column
+        additional_json_build := additional_json_build || format('''%I'', %I', trim(additional_column_names[i]), trim(additional_column_names[i]));  -- Doubling single quotes to correctly format a single quote within the string.
     END LOOP;
 
     -- Construct the dynamic SQL query
@@ -62,3 +62,9 @@ BEGIN
     RETURN QUERY EXECUTE generated_query;
 END;
 $$ LANGUAGE plpgsql;
+
+-- $q$ for nesting within $$
+-- %I for Postgres table and column names
+-- %s for strings
+
+
